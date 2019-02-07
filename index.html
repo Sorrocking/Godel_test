@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="stylee.css" rel="stylesheet">
+    <title>Audio player</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        #vinyl-record {
+            animation: none;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let player = document.getElementById("player");
+            let vinylRecord = document.getElementById("vinyl-record");
+
+            player.addEventListener("play", function() {
+                vinylRecord.style.animation = "spin 1.5s infinite linear";
+            });
+            player.addEventListener("pause", function() {
+                vinylRecord.style.animation = "none";
+            });
+            player.addEventListener("ended", function() {
+                vinylRecord.style.animation = "none";
+            });
+        });
+    </script>
+</head>
+<body>
+  <div>
+    <img id="vinyl-record" src="Vynilizer/1.png" width="200" height="200" alt="vinyl record">
+  </div>
+    <audio id="player" src="http://freshly-ground.com/data/audio/mpc/20090119%20-%20Untitled%20Groove.mp3" controls>
+        <p>I'm sorry but your browser doesn't support the <code>audio</code> element, so you can't run the demo.</p>
+    </audio>
+</body>
+</html>
